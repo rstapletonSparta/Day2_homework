@@ -1,0 +1,2 @@
+C:\Users\Ross Stapleton\Engineering45b\week2\day2\Day2_homework\obj\Debug\Day2_homework.csprojResolveAssemblyReference.cache
+C:\Users\Ross Stapleton\Engineering45b\week2\day2\Day2_homework\obj\Debug\Day2_homework.csproj.CoreCompileInputs.cache
