@@ -2,6 +2,16 @@
 
 namespace GameComponents
 {
+    class Map
+    {
+        private int mapWidth;
+        private int mapHeight;
+        public Map(int mapWidth, int mapHeight)
+        {
+            this.mapWidth = mapWidth;
+            this.mapHeight = mapHeight;
+        }
+    }
     class Player
     {
         private int health;
@@ -12,12 +22,12 @@ namespace GameComponents
         private int oneHandDamage = 15;
         private int[] position = new int[2];
         
-        public Player(int startHealth, int startMana, int x, int y)
+        public Player(int health, int mana, int x, int y)
         {
-            health = startHealth;
-            mana = startMana;
-            position[0] = x;
-            position[1] = y;
+            this.health = health;
+            this.mana = mana;
+            this.position[0] = x;
+            this.position[1] = y;
         }
         // taking damage
         public int TakeDamage(int damage)
@@ -29,22 +39,26 @@ namespace GameComponents
             // this should make the player burn for a period
             return health;
         }
-
         // effects from fighting eg less mana or more rage
     }
     class NPC
     {
-        private int id = 0;
-        private Player player;
         private int health;
-        private int[] position;
+        private int x;
+        private int y;
 
-        //public NPC(int npcHealth, int x, int y)
-        //{
-        //    health = npcHealth;
-        //    position[0] = x;
-        //    position[1] = y;
-        //}
+        public int Health { get => health; set => health = value; }
+        public int Y { get => y; set => y = value; }
+        public int X { get => x; set => x = value; }
+        public NPC()
+        {
+        }
+        public NPC(int health, int x, int y)
+        {
+            this.Health = health;
+            this.X = x;
+            this.Y = y;
+        }
         public int TakeDamage(int damage)
         {
             return health - damage;
@@ -52,6 +66,16 @@ namespace GameComponents
     }
     class Enemy : NPC
     {
+        string typeOf;
+        public Enemy()
+        {
+
+        }
+        public Enemy(string typeOf,int health, int x, int y)
+            : base (health, x, y)
+        {
+            this.typeOf = typeOf;
+        }
         public void DealDamage(int damage)
         {
 
@@ -64,8 +88,16 @@ namespace GameComponents
     }
     class DarkWizard : Enemy
     {
-        private double mana;
-        private double magicDamage;
+        public DarkWizard(string typeOf, int health, int x, int y, int mana, int magicDamage, int magicRange)
+            : base (typeOf, health, x, y)
+        {
+            this.mana = mana;
+            this.magicDamage = magicDamage;
+            this.magicRange = magicRange;
+        }
+        private int mana;
+        private int magicDamage;
+        private int magicRange;
         // should check range if can melee use magic
     }
     class LightWizard : NPC

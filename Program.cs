@@ -12,15 +12,11 @@ namespace Day2_homework
     {
         static void Main(string[] args)
         {
-            Player player = new Player(200, 100, 10, 0);
+            Map map = new Map(500, 500);
+            Player player = new Player(200, 100, 200, 200);
 
-            NPC[] npcs =
-            {
-                new DarkWizard(),
-                new DarkWizard(),
-                new Ork(),
-                new Ork()
-            };
+            DarkWizard darkWizard = new DarkWizard("Wizard", 100, 40, 40, 400, 450, 20);
+            Ork ork = new Ork();
         }
     }
 }
